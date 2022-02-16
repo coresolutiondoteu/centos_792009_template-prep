@@ -1,16 +1,18 @@
-
+#!/bin/bash
+### !!! ### sudo chmod a+x /*.sh
 
 #Commands for the cloning operation on newly installed CentOS 7.9.2009
+#Credit: https://bitraboy.wordpress.com/2018/08/28/preparing-linux-template-vms/
 
 #Stop logging services
 service rsyslog stop 
 service auditd stop
 
 #Install required software
+yum update --skip-broken -y
 yum install -y nano
 
-#CleanUp
-yum update --skip-broken -y
+#Yum CleanUp
 yum clean all
 
 #Clear the logs
