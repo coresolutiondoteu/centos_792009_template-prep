@@ -143,6 +143,6 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		exit
 		#//Now we have to scp the hosts file across all hosts and verify via ping if we can see each other over hostnames
 else	
-	echo
+	reboot
 fi
 
