@@ -33,6 +33,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                 echo
                                                 echo "Your new hostname is $NewHostName"
                                                 echo
+												ssh-keygen -t rsa -b 2048
                 else
                         if [ $VMno_var = 2 ]; then
                                 hostnamectl set-hostname $VM2_Hostname_var
@@ -40,6 +41,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                 echo
                                                                 echo "Your new hostname is $NewHostName"
                                                                 echo
+																ssh-keygen -t rsa -b 2048
                         else
                                 if [ $VMno_var = 3 ]; then
                                         hostnamectl set-hostname $VM3_Hostname_var
@@ -47,6 +49,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                 echo
                                                                                 echo "Your new hostname is $NewHostName"
                                                                                 echo
+																				ssh-keygen -t rsa -b 2048
                                 else
                                         if [ $VMno_var = 4 ]; then
                                                 hostnamectl set-hostname $VM4_Hostname_var
@@ -54,6 +57,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                                 echo
                                                                                                 echo "Your new hostname is $NewHostName"
                                                                                                 echo
+																								ssh-keygen -t rsa -b 2048
                                         else
                                                 echo
                                                 echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
@@ -127,22 +131,18 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		#echo "Your updated hosts file looks like this"
 		#echo
 		#cat /etc/hosts
-		#SSH for flex3
-		ssh-keygen -t rsa -b 2048
-		#//scp keys to GW
-		ssh -y "root:Toor@${GW_IP_var}"
-		ssh-keygen -t rsa -b 2048
 		exit
-		ssh -y "root:Toor@${flex1_IP_var}"
-		ssh-keygen -t rsa -b 2048
-		#//scp keys to GW
-		exit
-		ssh -y "root:Toor@${flex2_IP_var}"
-		ssh-keygen -t rsa -b 2048
-		#//scp keys to GW and from there to all VMs
-		exit
-		#//Now we have to scp the hosts file across all hosts and verify via ping if we can see each other over hostnames
+		#//Now we have to scp the hosts file across all hosts verify via ping if we can see each other over hostnames
+		#//Exchange all keys for ssh- logins without user/pass 
 else	
 	reboot
 fi
 
+
+##SSH hints >> leave that as a separate script?
+#ssh-keygen -t rsa -b 4096 ssh-keygen -t dsa ssh-keygen -t ecdsa -b 521 ssh-keygen -t ed25519
+#ssh-keygen -t rsa -b 4096 ssh-keygen -t dsa ssh-keygen -t ecdsa -b 384
+#ssh-keygen -f ~/tatu-key-ecdsa -t ecdsa -b 521
+
+#copy SSH key
+#ssh-copy-id -i ~/.ssh/tatu-key-ecdsa user@host
