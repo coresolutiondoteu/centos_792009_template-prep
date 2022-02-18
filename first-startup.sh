@@ -10,6 +10,10 @@ echo "Shutting down the firewall"
 systemctl disable firewalld
 systemctl stop firewalld
 
+#Disable SELinux
+setenforce 0 
+sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config 
+
 #Hostnames
 #Defined Hostnames:
 VM1_Hostname_var="flex-gw"
