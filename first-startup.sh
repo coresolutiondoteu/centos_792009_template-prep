@@ -37,7 +37,6 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                 echo
                                                 echo "Your new hostname is $NewHostName"
                                                 echo
-												ssh-keygen -t rsa -b 2048
                 else
                         if [ $VMno_var = 2 ]; then
                                 hostnamectl set-hostname $VM2_Hostname_var
@@ -45,7 +44,6 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                 echo
                                                                 echo "Your new hostname is $NewHostName"
                                                                 echo
-																ssh-keygen -t rsa -b 2048
                         else
                                 if [ $VMno_var = 3 ]; then
                                         hostnamectl set-hostname $VM3_Hostname_var
@@ -53,7 +51,6 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                 echo
                                                                                 echo "Your new hostname is $NewHostName"
                                                                                 echo
-																				ssh-keygen -t rsa -b 2048
                                 else
                                         if [ $VMno_var = 4 ]; then
                                                 hostnamectl set-hostname $VM4_Hostname_var
@@ -61,7 +58,6 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                                 echo
                                                                                                 echo "Your new hostname is $NewHostName"
                                                                                                 echo
-																								ssh-keygen -t rsa -b 2048
                                         else
                                                 echo
                                                 echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
@@ -139,14 +135,35 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		#//Now we have to scp the hosts file across all hosts verify via ping if we can see each other over hostnames
 		#//Exchange all keys for ssh- logins without user/pass 
 else	
-	reboot
+	echo "Now we will generate SSH keys for login without password."
+	ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/"$NewHostName"_rsa  #needs to be renamend to id_rsa
+	echo
+	echo "Now lets copy this key to all other VMs, I will need 3 IP address in format xxx.xxx.xxx.xxx from other hosts than this one."
+	echo
+	echo "The system will do somethiong and I shall note this in here and prepare for that the user. Like Exit session after succesfull login etc."
+	echo
+	echo "What is the first IP address of next VM?"
+	read IP1_var
+	ssh-copy-id -i ~/.ssh/$NewHostName"_rsa.pub "$IP1_var"
+	echo
+	echo "What is the second IP address of next VM?"
+	read IP2_var
+	ssh-copy-id -i ~/.ssh/$NewHostName"_rsa.pub "$IP2_var"
+	echo
+	echo "What is the third IP address of next VM?"
+	read IP3_var
+	ssh-copy-id -i ~/.ssh/$NewHostName"_rsa.pub "$IP3_var"
+	echo
+	
+	
+	ssh-copy-id -i ~/.ssh/id_rsa.pub $IP1_var
+	ssh-copy-id -i ~/.ssh/id_rsa.pub $IP1_var
 fi
 
 
 ##SSH hints >> leave that as a separate script?
+
 #ssh-keygen -t rsa -b 4096 ssh-keygen -t dsa ssh-keygen -t ecdsa -b 521 ssh-keygen -t ed25519
 #ssh-keygen -t rsa -b 4096 ssh-keygen -t dsa ssh-keygen -t ecdsa -b 384
 #ssh-keygen -f ~/tatu-key-ecdsa -t ecdsa -b 521
 
-#copy SSH key
-#ssh-copy-id -i ~/.ssh/tatu-key-ecdsa user@host
