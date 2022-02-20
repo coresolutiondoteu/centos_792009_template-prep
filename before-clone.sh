@@ -16,6 +16,7 @@ yum install -y wget
 #Get (latest) Scripts 
 wget https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/first-startup.sh /etc/profile.d/
 wget https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/ssh-finish.sh /etc/profile.d/
+chmod +x /etc/profile.d/*.sh
 
 #Yum CleanUp
 yum clean all
