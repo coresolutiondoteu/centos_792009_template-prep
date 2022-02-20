@@ -19,4 +19,8 @@ curl -L -o- https://bit.ly/3s5tDUI | bash
 
 curl -L -o- https://bit.ly/3scXNWx | bash
 
-(only 4 VMs are expected)
+4) After VM planned shutdown, make clones and continue with Power on. Wait till the end and then Power another VM.
+
+5) After you end with last VM, you can restart first Vm with reboot and wait till the end. Then another one. Last VM is already done. (3x reboot, on VM1, VM2 and VM3).
+
+6) Done. (only 4 Clone VMs are expected in total)
