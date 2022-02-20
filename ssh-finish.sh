@@ -39,7 +39,9 @@ else
 	fi
 fi
 echo
-rm -f /etc/profile.d/ssh-finish.sh
+#Cleaning up startup scripts in ~/.bash_profile
+sed -i '' -e '$ d' ~/.bash_profile
+sed -i '' -e '$ d' ~/.bash_profile
 echo "Environmental preparation is finished. You can proceed with additional steps in your PowerFlex installation."
 echo
 echo "Thank you!"
