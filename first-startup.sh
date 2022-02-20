@@ -32,27 +32,21 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                 NewHostName=$(hostname)
                                                 echo
                                                 echo "Your new hostname is $NewHostName"
-                                                echo
-						mv /home/ssh-finish.sh /etc/profile.d/
-												
+                                                echo												
                 else
                         if [ $VMno_var = 2 ]; then
                                 hostnamectl set-hostname $VM2_Hostname_var
                                                                 NewHostName=$(hostname)
                                                                 echo
                                                                 echo "Your new hostname is $NewHostName"
-                                                                echo
-								mv /home/ssh-finish.sh /etc/profile.d/
-																
+                                                                echo															
                         else
                                 if [ $VMno_var = 3 ]; then
                                         hostnamectl set-hostname $VM3_Hostname_var
                                                                                 NewHostName=$(hostname)
                                                                                 echo
                                                                                 echo "Your new hostname is $NewHostName"
-                                                                                echo
-										mv /home/ssh-finish.sh /etc/profile.d/
-																				
+                                                                                echo								
                                 else
                                         if [ $VMno_var = 4 ]; then
                                                 hostnamectl set-hostname $VM4_Hostname_var
@@ -60,10 +54,6 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                                 echo
                                                                                                 echo "Your new hostname is $NewHostName"
                                                                                                 echo
-												rm -f /home/ssh-finish.sh
-																								#Deleting unused scripts for this machine.
-																								rm -f ~/home/ssh_finish.sh
-																								rm -f ~/home/before-clone.sh
                                         else
                                                 echo
                                                 echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
@@ -161,11 +151,23 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		echo
 		echo "Your environment preparation is finished, please run './ssh.sh' on flex-gw, flex1 and flex2 hosts (flex3 node preaparation is finished)."
 		echo
-		rm -f /etc/profile.d/first-startup.sh
+		#Last line of .bash_profile deleted
+		sed -i '' -e '$ d' ~/.bash_profile
+		#Last line of .bash_profile deleted
+		sed -i '' -e '$ d' ~/.bash_profile
 		sleep 5 ; reboot
 		
 else
-	rm -f /etc/profile.d/first-startup.sh
+	#Last line of .bash_profile deleted
+	sed -i '' -e '$ d' ~/.bash_profile
+	
+if [ "$NewHostName" = $VM4_Hostname_var ]; then
+	echo
+	echo "No need to run ssh-finish.sh on Flex3, skipping step..."
+	sed -i '' -e '$ d' ~/.bash_profile
+	echo
+else
+	echo './home/ssh-finish.sh' >> ~/.bash_profile
 	echo
 	echo "Reboot your system once last VM runned the first automated script and rebooted, this step will finish your environment preparation."
 	echo
