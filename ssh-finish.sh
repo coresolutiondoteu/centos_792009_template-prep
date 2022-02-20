@@ -39,7 +39,7 @@ else
 	fi
 fi
 echo
-rm -f ~/home/ssh_finish.sh
+rm -f /etc/profile.d/ssh-finish.sh
 echo "Environmental preparation is finished. You can proceed with additional steps in your PowerFlex installation."
 echo
 echo "Thank you!"
