@@ -57,6 +57,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                                 echo
                                                                                                 echo "Your new hostname is $NewHostName"
                                                                                                 echo
+												rm -f /etc/profile.d/ssh-finish.sh
 																								#Deleting unused scripts for this machine.
 																								rm -f ~/home/ssh_finish.sh
 																								rm -f ~/home/before-clone.sh
@@ -157,12 +158,10 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		echo
 		echo "Your environment preparation is finished, please run './ssh.sh' on flex-gw, flex1 and flex2 hosts (flex3 node preaparation is finished)."
 		echo
-		rm -f ~/home/first-startup.sh
 		sleep 5 ; reboot
 		
 else
-	rm -f ~/home/first-startup.sh
-	rm -f ~/home/before-clone.sh
+	rm -f /etc/profile.d/first-startup.sh
 	echo
 	echo "Your system will reboot in 5 seconds."
 	echo
