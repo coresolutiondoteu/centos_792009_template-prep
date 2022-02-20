@@ -23,45 +23,45 @@ echo
 echo "Your hostname is $Current_Hostname"
 echo
 if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_Hostname_var ] || [ "$Current_Hostname" = $VM3_Hostname_var ] || [ "$Current_Hostname" = $VM4_Hostname_var ]; then
-        echo "Hostname is already set correctly"
+    echo "Hostname is already set correctly"
+else
+    echo "What VM number this is (1,2,3 or 4)?"
+    read VMno_var
+    if [ $VMno_var = 1 ]; then
+        hostnamectl set-hostname $VM1_Hostname_var
+        NewHostName=$(hostname)
+        echo
+        echo "Your new hostname is $NewHostName"
+        echo												
+    else
+        if [ $VMno_var = 2 ]; then
+            hostnamectl set-hostname $VM2_Hostname_var
+            NewHostName=$(hostname)
+			echo
+            echo "Your new hostname is $NewHostName"
+            echo															
         else
-                echo "What VM number this is (1,2,3 or 4)?"
-                read VMno_var
-                if [ $VMno_var = 1 ]; then
-                        hostnamectl set-hostname $VM1_Hostname_var
-                                                NewHostName=$(hostname)
-                                                echo
-                                                echo "Your new hostname is $NewHostName"
-                                                echo												
+		    if [ $VMno_var = 3 ]; then
+			    hostnamectl set-hostname $VM3_Hostname_var
+			    NewHostName=$(hostname)
+                echo
+			    echo "Your new hostname is $NewHostName"
+                echo								
+            else
+                if [ $VMno_var = 4 ]; then
+                    hostnamectl set-hostname $VM4_Hostname_var
+                    NewHostName=$(hostname)
+                    echo
+                    echo "Your new hostname is $NewHostName"
+			        echo
                 else
-                        if [ $VMno_var = 2 ]; then
-                                hostnamectl set-hostname $VM2_Hostname_var
-                                                                NewHostName=$(hostname)
-                                                                echo
-                                                                echo "Your new hostname is $NewHostName"
-                                                                echo															
-                        else
-                                if [ $VMno_var = 3 ]; then
-                                        hostnamectl set-hostname $VM3_Hostname_var
-                                                                                NewHostName=$(hostname)
-                                                                                echo
-                                                                                echo "Your new hostname is $NewHostName"
-                                                                                echo								
-                                else
-                                        if [ $VMno_var = 4 ]; then
-                                                hostnamectl set-hostname $VM4_Hostname_var
-                                                                                                NewHostName=$(hostname)
-                                                                                                echo
-                                                                                                echo "Your new hostname is $NewHostName"
-                                                                                                echo
-                                        else
-                                                echo
-                                                echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
-                                                echo
-                                        fi
-                                fi
-                        fi
+                    echo
+				    echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
+                    echo
                 fi
+            fi
+        fi
+    fi
 fi
 
 #IP Addresses
@@ -104,9 +104,7 @@ echo 'DNS1='$NewIP_DNS_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
 echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-#Now we need to restart the service to take effect or reboot the machine at the end of this script
-
-
+#Now we need to restart the service to take effect or reboot the machine at the end of this script or restart the machineOS.
 
 #Hosts files
 #We will copy from the first host using scp
@@ -159,14 +157,6 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 else
 	#Last line of .bash_profile deleted
 	sed -i '' -e '$ d' ~/.bash_profile
-fi
-	
-if [ "$NewHostName" = $VM4_Hostname_var ]; then
-	echo
-	echo "No need to run ssh-finish.sh on Flex3, skipping step..."
-	sed -i '' -e '$ d' ~/.bash_profile
-	echo
-else
 	echo '/home/ssh-finish.sh' >> ~/.bash_profile
 	echo
 	echo "Reboot your system once last VM runned the first automated script and rebooted, this step will finish your environment preparation."
@@ -175,4 +165,7 @@ else
 	echo
 	echo "Thank you!"
 	echo
+	exit
 fi
+
+
