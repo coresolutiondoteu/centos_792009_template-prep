@@ -167,7 +167,7 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 	sed -i '' -e '$ d' ~/.bash_profile
 	echo
 else
-	echo './home/ssh-finish.sh' >> ~/.bash_profile
+	echo '/home/ssh-finish.sh' >> ~/.bash_profile
 	echo
 	echo "Reboot your system once last VM runned the first automated script and rebooted, this step will finish your environment preparation."
 	echo
