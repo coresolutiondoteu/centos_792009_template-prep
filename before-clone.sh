@@ -13,9 +13,13 @@ yum install -y nano
 yum install -y wget
 
 #Get (latest) Scripts 
-wget https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/first-startup.sh /etc/profile.d/
+wget https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/first-startup.sh /home/
 wget https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/ssh-finish.sh /home/
-chmod +x /etc/profile.d/*.sh
+chmod +x /home/*.sh
+echo ' ' >> ~/.bash_profile
+echo '#InstallationPowerFlex' >> ~/.bash_profile
+echo './home/first-startup.sh' >> ~/.bash_profile
+
 
 #Yum CleanUp
 yum clean all
