@@ -155,11 +155,11 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		sed -i '' -e '$ d' ~/.bash_profile
 		#Last line of .bash_profile deleted
 		sed -i '' -e '$ d' ~/.bash_profile
-		sleep 5 ; reboot
-		
+		sleep 5 ; reboot		
 else
 	#Last line of .bash_profile deleted
 	sed -i '' -e '$ d' ~/.bash_profile
+fi
 	
 if [ "$NewHostName" = $VM4_Hostname_var ]; then
 	echo
