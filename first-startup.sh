@@ -104,7 +104,9 @@ echo 'DNS1='$NewIP_DNS_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
 echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
+
 #Now we need to restart the service to take effect or reboot the machine at the end of this script or restart the machineOS.
+systemctl restart network
 
 #Hosts files
 #We will copy from the first host using scp
