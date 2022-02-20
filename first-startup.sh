@@ -157,6 +157,12 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		sed -i '' -e '$ d' ~/.bash_profile
 		sleep 5 ; reboot		
 else
+	#SSH-keygen for other VMs than flex3
+	echo "Now I will create SSH key pairs..."
+	echo
+	#Cleaning ~/.ssh/
+	rm -rf /.ssh/
+	ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
 	#Last line of .bash_profile deleted
 	sed -i '' -e '$ d' ~/.bash_profile
 	echo '/home/ssh-finish.sh' >> ~/.bash_profile
