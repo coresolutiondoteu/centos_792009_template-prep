@@ -18,14 +18,10 @@ Shell script for VM preparation for cloning and automating VMs deployment
 
 2) Power On VM and login inside with root/password and get your IP details
 
-
-	curl -L -o- https://bit.ly/3s5tDUI | bash
-
+curl -L -o- https://bit.ly/3s5tDUI | bash
 
 3) Make a snapshot of the template VM and start preparation for cloning.
 
-
-	curl -L -o- https://bit.ly/3scXNWx | bash
-
+curl -L -o- https://bit.ly/3scXNWx | bash
 
 (only 4 VMs are expected)
