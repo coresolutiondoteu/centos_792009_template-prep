@@ -10,10 +10,6 @@ echo "Shutting down the firewall"
 systemctl disable firewalld
 systemctl stop firewalld
 
-#Disable SELinux
-setenforce 0 
-sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config 
-
 #Hostnames
 #Defined Hostnames:
 VM1_Hostname_var="flex-gw"
@@ -37,6 +33,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                 echo
                                                 echo "Your new hostname is $NewHostName"
                                                 echo
+												
                 else
                         if [ $VMno_var = 2 ]; then
                                 hostnamectl set-hostname $VM2_Hostname_var
@@ -44,6 +41,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                 echo
                                                                 echo "Your new hostname is $NewHostName"
                                                                 echo
+																
                         else
                                 if [ $VMno_var = 3 ]; then
                                         hostnamectl set-hostname $VM3_Hostname_var
@@ -51,6 +49,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                 echo
                                                                                 echo "Your new hostname is $NewHostName"
                                                                                 echo
+																				
                                 else
                                         if [ $VMno_var = 4 ]; then
                                                 hostnamectl set-hostname $VM4_Hostname_var
@@ -58,6 +57,9 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                                 echo
                                                                                                 echo "Your new hostname is $NewHostName"
                                                                                                 echo
+																								#Deleting unused scripts for this machine.
+																								rm -f ~/home/ssh_finish.sh
+																								rm -f ~/home/before-clone.sh
                                         else
                                                 echo
                                                 echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
@@ -111,6 +113,7 @@ echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 #Now we need to restart the service to take effect or reboot the machine at the end of this script
 
 
+
 #Hosts files
 #We will copy from the first host using scp
 
@@ -128,42 +131,46 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		read flex3_IP_var
 		echo $flex3_IP_var' flex3' >> /etc/hosts
 		echo
-		#echo "Your updated hosts file looks like this"
-		#echo
-		#cat /etc/hosts
-		exit
+		echo "Your updated hosts file looks like this"
+		echo
+		cat /etc/hosts
+		echo
+		#SSH-keygen for flex3
+		echo "Now I will create SSH key pairs and register flex3 to all other hosts for ssh access without password."
+		echo
+		echo "Login to each VM on request, with default root password choosen during the instalation."
+		echo
+		#Cleaning ~/.ssh/
+		rm -rf /.ssh/
+		ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
+		#Nodes SSH registration
+		ssh-copy-id -i ~/.ssh/id_rsa.pub "$GW_IP_var"
+		ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex1_IP_var"
+		ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex2_IP_var"
 		#//Now we have to scp the hosts file across all hosts verify via ping if we can see each other over hostnames
-		#//Exchange all keys for ssh- logins without user/pass 
-else	
-	echo "Now we will generate SSH keys for login without password."
-	ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/"$NewHostName"_rsa  #needs to be renamend to id_rsa
+		echo "Now I will copy 'hosts' file to other nodes, for proper name resolution without DNS."
+		scp /etc/hosts root@"$GW_IP_var":/etc/hosts
+		scp /etc/hosts root@"$flex1_IP_var":/etc/hosts
+		scp /etc/hosts root@"$flex2_IP_var":/etc/hosts
+		echo
+		echo "Your system will reboot in 5 seconds."
+		echo
+		echo "Your environment preparation is finished, please run './ssh.sh' on flex-gw, flex1 and flex2 hosts (flex3 node preaparation is finished)."
+		echo
+		rm -f ~/home/first-startup.sh
+		sleep 5 ; reboot
+		
+else
+	rm -f ~/home/first-startup.sh
+	rm -f ~/home/before-clone.sh
 	echo
-	echo "Now lets copy this key to all other VMs, I will need 3 IP address in format xxx.xxx.xxx.xxx from other hosts than this one."
+	echo "Your system will reboot in 5 seconds."
 	echo
-	echo "The system will do somethiong and I shall note this in here and prepare for that the user. Like Exit session after succesfull login etc."
+	echo "After you will run 'first-startup.sh' script on your last VM, and that will restart, please run on this VM  final 'ssh_final.sh' script."
 	echo
-	echo "What is the first IP address of next VM?"
-	read IP1_var
-	ssh-copy-id -i ~/.ssh/$NewHostName"_rsa.pub "$IP1_var"
+	echo "Then you can proceed with the PowerFlex Installation."
 	echo
-	echo "What is the second IP address of next VM?"
-	read IP2_var
-	ssh-copy-id -i ~/.ssh/$NewHostName"_rsa.pub "$IP2_var"
+	echo "Thank you!"
 	echo
-	echo "What is the third IP address of next VM?"
-	read IP3_var
-	ssh-copy-id -i ~/.ssh/$NewHostName"_rsa.pub "$IP3_var"
-	echo
-	
-	
-	ssh-copy-id -i ~/.ssh/id_rsa.pub $IP1_var
-	ssh-copy-id -i ~/.ssh/id_rsa.pub $IP1_var
+	sleep 5 ; reboot
 fi
-
-
-##SSH hints >> leave that as a separate script?
-
-#ssh-keygen -t rsa -b 4096 ssh-keygen -t dsa ssh-keygen -t ecdsa -b 521 ssh-keygen -t ed25519
-#ssh-keygen -t rsa -b 4096 ssh-keygen -t dsa ssh-keygen -t ecdsa -b 384
-#ssh-keygen -f ~/tatu-key-ecdsa -t ecdsa -b 521
-
