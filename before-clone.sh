@@ -1,5 +1,4 @@
 #!/bin/bash
-### !!! ### sudo chmod a+x /*.sh
 
 #Commands for the cloning operation on newly installed CentOS 7.9.2009
 #Credit: https://bitraboy.wordpress.com/2018/08/28/preparing-linux-template-vms/
@@ -15,7 +14,7 @@ yum install -y wget
 
 #Get (latest) Scripts 
 wget https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/first-startup.sh /etc/profile.d/
-wget https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/ssh-finish.sh /etc/profile.d/
+wget https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/ssh-finish.sh /home/
 chmod +x /etc/profile.d/*.sh
 
 #Yum CleanUp
