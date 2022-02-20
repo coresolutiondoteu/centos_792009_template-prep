@@ -71,8 +71,8 @@ echo "Turn them one by one, not at the same time, to overcome any IP issues or s
 echo
 echo "First login inside the VM and then Turn ON another one. Wait for the 'first-startup.sh' to finish before moving to other steps."
 echo
-echo "Template will shutdown in 30 seconds from now..." 
+read -n 1 -r -s -p "Press any key to continue..."
+echo "Shutting down!"
 echo
-sleep 30
 history -c 
 sys-unconfig
