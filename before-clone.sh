@@ -18,7 +18,7 @@ wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009
 chmod +x /home/*.sh
 echo ' ' >> ~/.bash_profile
 echo '#InstallationPowerFlex' >> ~/.bash_profile
-echo './home/first-startup.sh' >> ~/.bash_profile
+echo '/home/first-startup.sh' >> ~/.bash_profile
 
 pause 5
 echo
