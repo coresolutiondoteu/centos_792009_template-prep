@@ -33,6 +33,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                 echo
                                                 echo "Your new hostname is $NewHostName"
                                                 echo
+						mv /home/ssh-finish.sh /etc/profile.d/
 												
                 else
                         if [ $VMno_var = 2 ]; then
@@ -41,6 +42,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                 echo
                                                                 echo "Your new hostname is $NewHostName"
                                                                 echo
+								mv /home/ssh-finish.sh /etc/profile.d/
 																
                         else
                                 if [ $VMno_var = 3 ]; then
@@ -49,6 +51,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                 echo
                                                                                 echo "Your new hostname is $NewHostName"
                                                                                 echo
+										mv /home/ssh-finish.sh /etc/profile.d/
 																				
                                 else
                                         if [ $VMno_var = 4 ]; then
@@ -57,7 +60,7 @@ if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_H
                                                                                                 echo
                                                                                                 echo "Your new hostname is $NewHostName"
                                                                                                 echo
-												rm -f /etc/profile.d/ssh-finish.sh
+												rm -f /home/ssh-finish.sh
 																								#Deleting unused scripts for this machine.
 																								rm -f ~/home/ssh_finish.sh
 																								rm -f ~/home/before-clone.sh
@@ -158,18 +161,16 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		echo
 		echo "Your environment preparation is finished, please run './ssh.sh' on flex-gw, flex1 and flex2 hosts (flex3 node preaparation is finished)."
 		echo
+		rm -f /etc/profile.d/first-startup.sh
 		sleep 5 ; reboot
 		
 else
 	rm -f /etc/profile.d/first-startup.sh
 	echo
-	echo "Your system will reboot in 5 seconds."
-	echo
-	echo "After you will run 'first-startup.sh' script on your last VM, and that will restart, please run on this VM  final 'ssh_final.sh' script."
+	echo "Reboot your system once last VM runned the first automated script and rebooted, this step will finish your environment preparation."
 	echo
 	echo "Then you can proceed with the PowerFlex Installation."
 	echo
 	echo "Thank you!"
 	echo
-	sleep 5 ; reboot
 fi
