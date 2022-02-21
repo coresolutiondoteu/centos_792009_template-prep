@@ -53,9 +53,8 @@ else
                             echo
 			    end
                     fi
-            fi
-        fi
-    fi
+         fi
+     fi
 fi
 
 #IP Addresses
