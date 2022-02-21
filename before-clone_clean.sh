@@ -72,7 +72,7 @@ echo "Turn them one by one, not at the same time,"
 echo "to overcome any IP issues or so later."
 echo
 echo "First login inside the Cloned VM and wait till the end of the script,"
-echo "then Turn ON next VM and Waittill end before moving to next steps."
+echo "then Turn ON next VM and Wait till end before moving to next steps."
 echo
 read -n 1 -r -s -p "Press any key to continue..."
 echo "Shutting down!"
