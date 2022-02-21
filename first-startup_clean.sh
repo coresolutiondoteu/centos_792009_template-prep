@@ -15,7 +15,6 @@ systemctl stop firewalld
 VM1_Hostname_var="VM5_K3s-master"
 VM2_Hostname_var="VM6_K3s-worker"
 VM3_Hostname_var="VM7_K3s-worker"
-#  VM4_Hostname_var="flex3"
 
 #Show current hostname
 Current_Hostname=$(hostname)
@@ -161,11 +160,11 @@ else
 	ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
 	#Last line of .bash_profile deleted
 	sed -i '' -e '$ d' ~/.bash_profile
-	echo '/home/ssh-finish.sh' >> ~/.bash_profile
+	echo '/home/ssh-finish_clean.sh' >> ~/.bash_profile
 	echo
-	echo "Reboot your system once last VM runned the first automated script and rebooted, this step will finish your environment preparation."
+	echo "Reboot your system once last VM7 runned the first automated script and rebooted, this step will finish your environment preparation."
 	echo
-	echo "Then you can proceed with the PowerFlex Installation."
+	echo "Then you can proceed with the K8s Installation."
 	echo
 	echo "Thank you!"
 	echo
