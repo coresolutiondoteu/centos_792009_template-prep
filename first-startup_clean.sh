@@ -21,7 +21,7 @@ Current_Hostname=$(hostname)
 echo
 echo "Your hostname is $Current_Hostname"
 echo
-if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_Hostname_var ] || [ "$Current_Hostname" = $VM3_Hostname_var ] || [ "$Current_Hostname" = $VM4_Hostname_var ]; then
+if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_Hostname_var ] || [ "$Current_Hostname" = $VM3_Hostname_var ]; then
     echo "Hostname is already set correctly"
 else
     echo "What VM number this is (1,2,3)?"
