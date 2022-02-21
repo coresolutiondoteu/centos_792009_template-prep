@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#ntpd config
+yum install -y ntp
+systemctl start ntpd
+systemctl enable ntpd
+systemctl status ntpd
+
 #Machine-ID
 systemd-machine-id-setup
 echo
