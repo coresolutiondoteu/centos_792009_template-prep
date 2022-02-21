@@ -157,7 +157,8 @@ else
 	sed -i '' -e '$ d' ~/.bash_profile
 	echo '/home/ssh-finish_clean.sh' >> ~/.bash_profile
 	echo
-	echo "Reboot your system once last VM7 runned the first automated script and rebooted, this step will finish your environment preparation."
+	echo "Reboot your system once last VM7 finished the first automated script and rebooted,"
+	echo "this step will finish your environment preparation."
 	echo
 	echo "Then you can proceed with the K8s Installation."
 	echo
