@@ -27,8 +27,9 @@ else
 	echo
 	echo "Please try to login without password to other hosts with 'ssh hostname' e.g. 'ssh $VM1_Hostname_var'"
 	echo "(see sll options with 'cat /etc/hosts')"
-    else
 	echo
+    else
+    	echo
     fi
 fi
 echo
