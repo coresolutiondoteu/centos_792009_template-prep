@@ -15,10 +15,10 @@ yum install -y wget
 #Get (latest) Scripts 
 wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/first-startup.sh
 wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/ssh-finish.sh
-chmod +x /home/*.sh
-echo ' ' >> ~/.bash_profile
-echo '#InstallationPowerFlex' >> ~/.bash_profile
-echo '/home/first-startup.sh' >> ~/.bash_profile
+#   chmod +x /home/*.sh
+#   echo ' ' >> ~/.bash_profile
+#   echo '#InstallationPowerFlex' >> ~/.bash_profile
+#   echo '/home/first-startup.sh' >> ~/.bash_profile
 
 pause 5
 echo
@@ -65,11 +65,14 @@ rm -f ~root/anaconda-ks.cfg
 
 ###Final Step (this will shutdown VM)
 echo
-echo "Now I will Turn Off the Template VM, and you can make 4 clones of this Template to continue with your PowerFlex installation."
+echo "Now I will Turn Off the Template VM, and you can make 4 clones"
+echo "of this Template to continue with your installation."
 echo
-echo "Turn them one by one, not at the same time, to overcome any IP issues or so."
+echo "Turn them one by one, not at the same time," 
+echo "to overcome any IP issues or so later."
 echo
-echo "First login inside the VM and then Turn ON another one. Wait for the 'first-startup.sh' to finish before moving to other steps."
+echo "First login inside the Cloned VM and wait till the end of the script,"
+echo "then Turn ON next VM and Waittill end before moving to next steps."
 echo
 read -n 1 -r -s -p "Press any key to continue..."
 echo "Shutting down!"
