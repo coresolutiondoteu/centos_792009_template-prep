@@ -13,7 +13,7 @@ yum install -y nano
 yum install -y wget
 
 #Get (latest) Scripts 
-wget -P /home/ https://github.com/coresolutiondoteu/centos_792009_template-prep/blob/different/first-startup_clean.sh
+wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/different/first-startup_clean.sh
 wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/different/ssh-finish_clean.sh
 chmod +x /home/*.sh
 echo ' ' >> ~/.bash_profile
