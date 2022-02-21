@@ -15,10 +15,10 @@ yum install -y wget
 #Get (latest) Scripts 
 wget -P /home/ https://github.com/coresolutiondoteu/centos_792009_template-prep/blob/different/first-startup_clean.sh
 wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/different/ssh-finish_clean.sh
-#   chmod +x /home/*.sh
-#   echo ' ' >> ~/.bash_profile
-#   echo '#Installation_K8s' >> ~/.bash_profile
-#   echo '/home/first-startup_clean.sh' >> ~/.bash_profile
+chmod +x /home/*.sh
+echo ' ' >> ~/.bash_profile
+echo '#Installation_K8s' >> ~/.bash_profile
+echo '/home/first-startup_clean.sh' >> ~/.bash_profile
 
 pause 5
 echo
