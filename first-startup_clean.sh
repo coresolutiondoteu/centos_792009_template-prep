@@ -24,23 +24,23 @@ echo
 if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_Hostname_var ] || [ "$Current_Hostname" = $VM3_Hostname_var ]; then
     echo "Hostname is already set correctly"
 else
-    echo "What VM number this is (1,2,3)?"
+    echo "What VM number this is (5,6,7)?"
     read VMno_var
-    if [ $VMno_var = 1 ]; then
+    if [ $VMno_var = 5 ]; then
         hostnamectl set-hostname $VM1_Hostname_var
         NewHostName=$(hostname)
         echo
         echo "Your new hostname is $NewHostName"
         echo												
     else
-        if [ $VMno_var = 2 ]; then
+        if [ $VMno_var = 6 ]; then
             hostnamectl set-hostname $VM2_Hostname_var
             NewHostName=$(hostname)
 			echo
             echo "Your new hostname is $NewHostName"
             echo															
         else
-		    if [ $VMno_var = 3 ]; then
+		    if [ $VMno_var = 7 ]; then
 			    hostnamectl set-hostname $VM3_Hostname_var
 			    NewHostName=$(hostname)
                             echo
@@ -48,7 +48,8 @@ else
                             echo								
                     else
                             echo
-		            echo "Only numbers in between 1 and up to 3 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
+		            echo "Only numbers in between 5 and up to 7 are allowed,"
+			    echo "but you did use $VMno_var which is illegal! Run this script again, please."
                             echo
 			    end
                     fi
