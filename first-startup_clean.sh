@@ -12,9 +12,9 @@ systemctl stop firewalld
 
 #Hostnames
 #Defined Hostnames:
-VM1_Hostname_var="VM5_K3s-master"
-VM2_Hostname_var="VM6_K3s-worker"
-VM3_Hostname_var="VM7_K3s-worker"
+VM1_Hostname_var="vm5_k3s-master"
+VM2_Hostname_var="vm6_k3s-worker"
+VM3_Hostname_var="vm7_k3s-worker"
 
 #Show current hostname
 Current_Hostname=$(hostname)
