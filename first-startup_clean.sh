@@ -12,10 +12,10 @@ systemctl stop firewalld
 
 #Hostnames
 #Defined Hostnames:
-VM1_Hostname_var="flex-gw"
-VM2_Hostname_var="flex1"
-VM3_Hostname_var="flex2"
-VM4_Hostname_var="flex3"
+VM1_Hostname_var="VM5_K3s-master"
+VM2_Hostname_var="VM6_K3s-worker"
+VM3_Hostname_var="VM7_K3s-worker"
+#  VM4_Hostname_var="flex3"
 
 #Show current hostname
 Current_Hostname=$(hostname)
@@ -25,7 +25,7 @@ echo
 if [ "$Current_Hostname" = $VM1_Hostname_var ] || [ "$Current_Hostname" = $VM2_Hostname_var ] || [ "$Current_Hostname" = $VM3_Hostname_var ] || [ "$Current_Hostname" = $VM4_Hostname_var ]; then
     echo "Hostname is already set correctly"
 else
-    echo "What VM number this is (1,2,3 or 4)?"
+    echo "What VM number this is (1,2,3)?"
     read VMno_var
     if [ $VMno_var = 1 ]; then
         hostnamectl set-hostname $VM1_Hostname_var
@@ -44,21 +44,15 @@ else
 		    if [ $VMno_var = 3 ]; then
 			    hostnamectl set-hostname $VM3_Hostname_var
 			    NewHostName=$(hostname)
-                echo
+                            echo
 			    echo "Your new hostname is $NewHostName"
-                echo								
-            else
-                if [ $VMno_var = 4 ]; then
-                    hostnamectl set-hostname $VM4_Hostname_var
-                    NewHostName=$(hostname)
-                    echo
-                    echo "Your new hostname is $NewHostName"
-			        echo
-                else
-                    echo
-				    echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
-                    echo
-                fi
+                            echo								
+                    else
+                            echo
+		            echo "Only numbers in between 1 and up to 3 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
+                            echo
+			    end
+                    fi
             fi
         fi
     fi
@@ -111,26 +105,23 @@ systemctl restart network
 #Hosts files
 #We will copy from the first host using scp
 
-if [ "$NewHostName" = $VM4_Hostname_var ]; then
-    echo "What is your flex-gw host IP address? Type in format xxx.xxx.xxx.xxx"
+if [ "$NewHostName" = $VM3_Hostname_var ]; then
+    echo "What is your VM5_K3s-master host IP address? Type in format xxx.xxx.xxx.xxx"
 		read GW_IP_var
-		echo $GW_IP_var' flex-gw' >> /etc/hosts
-	echo "What is your flex1 host IP address? Type in format xxx.xxx.xxx.xxx"
+		echo $GW_IP_var' VM5_K3s-master' >> /etc/hosts
+	echo "What is your VM6_K3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
 		read flex1_IP_var
-		echo $flex1_IP_var' flex1' >> /etc/hosts
-	echo "What is your flex2 host IP address? Type in format xxx.xxx.xxx.xxx"
+		echo $flex1_IP_var' VM6_K3s-worker' >> /etc/hosts
+	echo "What is your VM7_K3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
 		read flex2_IP_var
-		echo $flex2_IP_var' flex2' >> /etc/hosts
-	echo "What is your flex3 host IP address? Type in format xxx.xxx.xxx.xxx"
-		read flex3_IP_var
-		echo $flex3_IP_var' flex3' >> /etc/hosts
+		echo $flex2_IP_var' VM7_K3s-worker' >> /etc/hosts
 		echo
 		echo "Your updated hosts file looks like this"
 		echo
 		cat /etc/hosts
 		echo
 		#SSH-keygen for flex3
-		echo "Now I will create SSH key pairs and register flex3 to all other hosts for ssh access without password."
+		echo "Now I will create SSH key pairs and register VM7_K3s-worker to all other hosts for ssh access without password."
 		echo
 		echo "Login to each VM on request, with default root password choosen during the instalation."
 		echo
@@ -147,15 +138,20 @@ if [ "$NewHostName" = $VM4_Hostname_var ]; then
 		scp /etc/hosts root@"$flex1_IP_var":/etc/hosts
 		scp /etc/hosts root@"$flex2_IP_var":/etc/hosts
 		echo
-		echo "Your system will reboot in 5 seconds."
+		echo "Your system will reboot on any key press!!!"
 		echo
-		echo "Your environment preparation is finished, please run './ssh.sh' on flex-gw, flex1 and flex2 hosts (flex3 node preaparation is finished)."
+		echo "Your environment preparation is finished, please reboot VM5 and wait till the end."
+		echo "When the script will finish reboot another VM6 and wait till the end."
+		echo "Your lab is ready once VM6 reboot is finished." 
 		echo
 		#Last line of .bash_profile deleted
 		sed -i '' -e '$ d' ~/.bash_profile
 		#Last line of .bash_profile deleted
 		sed -i '' -e '$ d' ~/.bash_profile
-		sleep 5 ; reboot		
+		echo
+		read -n 1 -r -s -p "Press any key to continue..."
+		echo "Restarting!"
+		reboot 0
 else
 	#SSH-keygen for other VMs than flex3
 	echo "Now I will create SSH key pairs..."
