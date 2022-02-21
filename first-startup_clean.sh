@@ -105,15 +105,15 @@ systemctl restart network
 #We will copy from the first host using scp
 
 if [ "$NewHostName" = $VM3_Hostname_var ]; then
-    echo "What is your VM5_K3s-master host IP address? Type in format xxx.xxx.xxx.xxx"
+    echo "What is your vm5_k3s-master host IP address? Type in format xxx.xxx.xxx.xxx"
 		read GW_IP_var
-		echo $GW_IP_var' VM5_K3s-master' >> /etc/hosts
-	echo "What is your VM6_K3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
+		echo $GW_IP_var' vm5_k3s-master' >> /etc/hosts
+	echo "What is your vm6_k3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
 		read flex1_IP_var
-		echo $flex1_IP_var' VM6_K3s-worker' >> /etc/hosts
-	echo "What is your VM7_K3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
+		echo $flex1_IP_var' vm6_k3s-worker' >> /etc/hosts
+	echo "What is your vm7_k3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
 		read flex2_IP_var
-		echo $flex2_IP_var' VM7_K3s-worker' >> /etc/hosts
+		echo $flex2_IP_var' vm7_k3s-worker' >> /etc/hosts
 		echo
 		echo "Your updated hosts file looks like this"
 		echo
