@@ -111,15 +111,18 @@ if [ "$NewHostName" = $VM3_Hostname_var ]; then
 	echo "What is your vm6_k3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
 		read flex1_IP_var
 		echo $flex1_IP_var' vm6_k3s-worker' >> /etc/hosts
+		echo $NewIP_var' vm7_k3s-worker' >> /etc/hosts
 		echo
 		echo "Your updated hosts file looks like this"
 		echo
 		cat /etc/hosts
 		echo
 		#SSH-keygen for flex3
-		echo "Now I will create SSH key pairs and register VM7_K3s-worker to all other hosts for ssh access without password."
+		echo "Now I will create SSH key pairs and register VM7_K3s-worker"
+		echo "to all other hosts for ssh access without password."
 		echo
-		echo "Login to each VM on request, with default root password choosen during the instalation."
+		echo "Login to each VM on request, with default root password choosen"
+		echo "during the instalation."
 		echo
 		#Cleaning ~/.ssh/
 		rm -rf /.ssh/
