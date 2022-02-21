@@ -75,7 +75,7 @@ echo "First login inside the Cloned VM and wait till the end of the script,"
 echo "then Turn ON next VM and Wait till end before moving to next steps."
 echo
 read -n 1 -r -s -p "Press any key to continue..."
-echo "Shutting down!"
+echo "Shutting down machine!"
 echo
 history -c 
 sys-unconfig
