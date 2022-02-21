@@ -111,9 +111,6 @@ if [ "$NewHostName" = $VM3_Hostname_var ]; then
 	echo "What is your vm6_k3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
 		read flex1_IP_var
 		echo $flex1_IP_var' vm6_k3s-worker' >> /etc/hosts
-	echo "What is your vm7_k3s-worker host IP address? Type in format xxx.xxx.xxx.xxx"
-		read flex2_IP_var
-		echo $flex2_IP_var' vm7_k3s-worker' >> /etc/hosts
 		echo
 		echo "Your updated hosts file looks like this"
 		echo
@@ -130,12 +127,10 @@ if [ "$NewHostName" = $VM3_Hostname_var ]; then
 		#Nodes SSH registration
 		ssh-copy-id -i ~/.ssh/id_rsa.pub "$GW_IP_var"
 		ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex1_IP_var"
-		ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex2_IP_var"
 		#//Now we have to scp the hosts file across all hosts verify via ping if we can see each other over hostnames
 		echo "Now I will copy 'hosts' file to other nodes, for proper name resolution without DNS."
 		scp /etc/hosts root@"$GW_IP_var":/etc/hosts
 		scp /etc/hosts root@"$flex1_IP_var":/etc/hosts
-		scp /etc/hosts root@"$flex2_IP_var":/etc/hosts
 		echo
 		echo "Your system will reboot on any key press!!!"
 		echo
