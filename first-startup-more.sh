@@ -30,7 +30,7 @@ echo
 echo "Your hostname is $Current_Hostname"
 echo
 if [ "$Current_Hostname" = $vm1_hostname_var ] || [ "$Current_Hostname" = $vm2_hostname_var ] || [ "$Current_Hostname" = $vm3_hostname_var ] || [ "$Current_Hostname" = $vm4_hostname_var ]; then
-  echo "Hostname is already set correctly"
+    echo "Hostname is already set correctly"
 else
   echo "What VM Template clone number is this (1,2,3 or 4)?"
   read VMno_var
