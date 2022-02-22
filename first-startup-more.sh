@@ -154,7 +154,7 @@ else
         fi
     fi
 fi
-echo "Was hosts file updated?
+echo "Was hosts file updated?"
 cat /etc/hosts
 
 
