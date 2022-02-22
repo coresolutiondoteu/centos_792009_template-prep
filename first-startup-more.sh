@@ -1,7 +1,18 @@
 #!/bin/bash
 
-#Reading all variables from variables.vars
-value=`cat /home/variables.vars`
+#Reading all variables from /home/*.vars
+read vm1_hostname_var < /home/flex-gw.vars
+read vm2_hostname_var < /home/flex1.vars
+read vm3_hostname_var < /home/flex2.vars
+read vm4_hostname_var < /home/flex3.vars
+read flexgwip_var < /home/flexgwip.vars
+read flex1ip_var < /home/flex1ip.vars
+read flex2ip_var < /home/flex2ip.vars
+read flex3ip_var < /home/flex3ip.vars
+read prefix_var < /home/prefix.vars
+read netgwip_var < /home/netgwip.vars
+read dnsip_var < /home/dnsip.vars
+
 clear
 echo "Your scritp variables are:"
 echo
@@ -30,7 +41,7 @@ echo
 echo "Your hostname is $Current_Hostname"
 echo
 if [ "$Current_Hostname" = $vm1_hostname_var ] || [ "$Current_Hostname" = $vm2_hostname_var ] || [ "$Current_Hostname" = $vm3_hostname_var ] || [ "$Current_Hostname" = $vm4_hostname_var ]; then
-    echo "Hostname is already set correctly"
+  echo "Hostname is already set correctly"
 else
   echo "What VM Template clone number is this (1,2,3 or 4)?"
   read VMno_var
