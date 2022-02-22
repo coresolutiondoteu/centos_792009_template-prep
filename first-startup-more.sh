@@ -1,5 +1,18 @@
 #!/bin/bash
 
+#Reading all variables from /home/*.vars
+read vm1_hostname_var < /home/flex-gw.vars
+read vm2_hostname_var < /home/flex1.vars
+read vm3_hostname_var < /home/flex2.vars
+read vm4_hostname_var < /home/flex3.vars
+read flexgwip_var < /home/flexgwip.vars
+read flex1ip_var < /home/flex1ip.vars
+read flex2ip_var < /home/flex2ip.vars
+read flex3ip_var < /home/flex3ip.vars
+read prefix_var < /home/prefix.vars
+read netgwip_var < /home/netgwip.vars
+read dnsip_var < /home/dnsip.vars
+
 #NTPd
 systemctl start ntpd
 systemctl enable ntpd
