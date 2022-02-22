@@ -30,3 +30,4 @@ echo "/                                                                 /"
 echo "/          I will guide you through the preparation.              /"
 echo "/                                                                 /"
 echo "///////////////////////////////////////////////////////////////////"
+echo
