@@ -85,19 +85,14 @@ echo $dnsip_var >> /home/dnsip.vars
 echo
 echo "Thank you, we have set variables for flex nodes preparation."
 echo
-clear
-echo "Your new variable file looks like this:"
-#echo
-#cat /home/variables.vars
+read -n 1 -r -s -p "All good? Press any key to continue..."
 echo
-echo read -n 1 -r -s -p "All good? Press any key to continue..."
-clear
 echo "Next process will be automatic and at the end VM will shutdown"
 echo
 echo "Then you can make 4 clones from your newly prepared template VM"
 echo
 read -n 1 -r -s -p "I am ready to generalize your template, press any key to continue..."
- 
+
 
 ##Pre-Clone script defionition
 clear
@@ -116,11 +111,6 @@ chmod +x /home/*.sh
 echo ' ' >> ~/.bash_profile
 echo '#InstallationPowerFlex' >> ~/.bash_profile
 echo '/home/first-startup-more.sh' >> ~/.bash_profile
-
-#clear
-#echo
-#cat ~/.bash_profile
-#echo
 
 #Yum CleanUp
 yum clean all
@@ -168,9 +158,12 @@ echo "Start them one by one, not at the same time, to overcome any IP issues or 
 echo
 echo "First login inside the VM and then Turn ON another one. Wait for the startup script finish before moving to other steps."
 echo
-read -n 1 -r -s -p "Press any key to continue..."
+
+read -n 1 -r -s -p "Press any key to shutdown..."
+
 echo "Shutting down!"
+sleep 20
+
 clear
-echo
 history -c 
 sys-unconfig
