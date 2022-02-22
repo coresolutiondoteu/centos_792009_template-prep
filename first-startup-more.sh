@@ -9,19 +9,6 @@ echo $value
 echo
 sleep 5
 
-#Imported vars from file - for testing purposes
-#vm1_hostname_var="flex-gw"
-#vm2_hostname_var="flex1"
-#vm3_hostname_var="flex2"
-#vm4_hostname_var="flex3"
-#flexgwip_var="192.168.239.200"
-#flex1ip_var="192.168.239.201"
-#flex2ip_var="192.168.239.202"
-#flex3ip_var="192.168.239.203"
-#prefix_var="24"
-#netgwip_var="192.168.239.2"
-#dnsip_var="192.168.239.2"
-
 #NTPd
 systemctl start ntpd
 systemctl enable ntpd
@@ -37,13 +24,6 @@ echo "Shutting down the firewall"
 systemctl disable firewalld
 systemctl stop firewalld
 
-#Hostnames
-#Defined Hostnames:
-#VM1_Hostname_var="flex-gw"
-#VM2_Hostname_var="flex1"
-#VM3_Hostname_var="flex2"
-#VM4_Hostname_var="flex3"
-
 #Show current hostname
 Current_Hostname=$(hostname)
 echo
@@ -55,11 +35,11 @@ else
     echo "What VM Template clone number is this (1,2,3 or 4)?"
     read VMno_var
     if [ $VMno_var = 1 ]; then
-        hostnamectl set-hostname $vm1_hostname_var
-        NewHostName1=$(hostname)
-        echo
-        echo "Your new hostname is $NewHostName1"
-        echo
+    		hostnamectl set-hostname $vm1_hostname_var
+		NewHostName1=$(hostname)
+		echo
+		echo "Your new hostname is $NewHostName1"
+		echo
 		sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
 		echo
 		echo "DHCP records from the VM were deleted, now we will set static definition."
@@ -94,12 +74,12 @@ else
 		ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex2ip_var"
 		ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex3ip_var"
     else
-        if [ $VMno_var = 2 ]; then
-            hostnamectl set-hostname $vm2_hostname_var
-            NewHostName2=$(hostname)
+    	if [ $VMno_var = 2 ]; then
+			hostnamectl set-hostname $vm2_hostname_var
+			NewHostName2=$(hostname)
 			echo
-            echo "Your new hostname is $NewHostName2"
-            echo
+            		echo "Your new hostname is $NewHostName2"
+            		echo
 			sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
 			echo
 			echo "DHCP records from the VM were deleted, now we will set static definition."
@@ -107,11 +87,11 @@ else
 			echo 'IPADDR='$flex1ip_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
 			echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
 			echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-			echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
+            		echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
 			#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 			#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 			echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-			echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
+            		echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 			echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 			systemctl restart network
 			echo $flexgwip_var' flex-gw' >> /etc/hosts
@@ -133,13 +113,13 @@ else
 			ssh-copy-id -i ~/.ssh/id_rsa.pub "$flexgwip_var"
 			ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex2ip_var"
 			ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex3ip_var"
-        else
+		else
 		    if [ $VMno_var = 3 ]; then
-			    hostnamectl set-hostname $vm3_hostname_var
-			    NewHostName3=$(hostname)
-                echo
-			    echo "Your new hostname is $NewHostName3"
-                echo
+		    		hostnamectl set-hostname $vm3_hostname_var
+			    	NewHostName3=$(hostname)
+                		echo
+			    	echo "Your new hostname is $NewHostName3"
+                		echo
 				sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
 				echo
 				echo "DHCP records from the VM were deleted, now we will set static definition."
@@ -174,12 +154,12 @@ else
 				ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex1ip_var"
 				ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex3ip_var"
 			else
-                if [ $VMno_var = 4 ]; then
-                    hostnamectl set-hostname $vm4_hostname_var
-                    NewHostName4=$(hostname)
-                    echo
-                    echo "Your new hostname is $NewHostName4"
-			        echo
+                		if [ $VMno_var = 4 ]; then
+                    			hostnamectl set-hostname $vm4_hostname_var
+                    			NewHostName4=$(hostname)
+                    			echo
+                    			echo "Your new hostname is $NewHostName4"
+			        	echo
 					sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
 					echo
 					echo "DHCP records from the VM were deleted, now we will set static definition."
@@ -211,7 +191,7 @@ else
 					ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex2ip_var"
                 else
                     echo
-				    echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
+                    echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
                     echo
                 fi
             fi
