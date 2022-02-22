@@ -158,7 +158,7 @@ clear
 echo 
 echo "After your VM restart, please connect to its new IP address we just set."
 echo
-echo "We will finish the SSH keys generation and exchange once you log in.
+echo "We will finish the SSH keys generation and exchange once you log in."
 echo
 read -n 1 -r -s -p "Press any key to restart..."
 reboot
