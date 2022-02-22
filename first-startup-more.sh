@@ -14,10 +14,10 @@ read netgwip_var < /home/netgwip.vars
 read dnsip_var < /home/dnsip.vars
 
 #Hosts file Update
-echo $flexgwip_var' flex-gw' >> /etc/hosts
-echo $flex1ip_var' flex1' >> /etc/hosts
-echo $flex2ip_var' flex2' >> /etc/hosts
-echo $flex3ip_var' flex3' >> /etc/hosts
+#echo $flexgwip_var' flex-gw' >> /etc/hosts
+#echo $flex1ip_var' flex1' >> /etc/hosts
+#echo $flex2ip_var' flex2' >> /etc/hosts
+#echo $flex3ip_var' flex3' >> /etc/hosts
 
 #NTPd
 systemctl start ntpd
