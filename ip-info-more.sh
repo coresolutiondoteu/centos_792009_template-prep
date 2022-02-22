@@ -9,9 +9,14 @@
 # So we can be sure, that previous steps were done correctly.
 #
 
+
+
 #Showing current IP configuration
-echo 
-echo "Please write down your IP default configuration based on the DHCP from VMware Networking (By Default DHCP uses addresses x.x.x.128 - x.x.x.254)"
+echo "----------------------------------------------------------------------------------------"
+echo "Please write down your IP default configuration based on the DHCP from VMware Networking"
+echo "(By Default DHCP uses addresses x.x.x.128 - x.x.x.254)"
+echo "The best then would be to choose something like 192.168.xxx.10 and up..."
+echo "----------------------------------------------------------------------------------------"
 echo
 #Add static IP information, based on your IP requirments
 Current_IP=$(ip add | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/24')
@@ -26,10 +31,10 @@ echo
 echo "Now we can proceed to the next steps, I will need from you some imputs..."
 echo
 #These are predefined variables for this installation
-echo vm1_hostname_var="flex-gw" >> /home/variables.vars
-echo vm2_hostname_var="flex1" >> /home/variables.vars
-echo vm3_hostname_var="flex2" >> /home/variables.vars
-echo vm4_hostname_var="flex3" >> /home/variables.vars
+echo 'vm1_hostname_var="flex-gw"' >> /home/variables.vars
+echo 'vm2_hostname_var="flex1"' >> /home/variables.vars
+echo 'vm3_hostname_var="flex2"' >> /home/variables.vars
+echo 'vm4_hostname_var="flex3"' >> /home/variables.vars
 echo
 echo "What is your future flex-gw IP address?"
 read flexgwip_var
@@ -62,4 +67,8 @@ read dnsip_var
 echo 'dnsip_var="'$dnsip_var'"' >> /home/variables.vars
 echo
 echo "Thank you, we have set variables for flex nodes preparation."
+echo
+read -n 1 -r -s -p "Proceeding to the next step, press any key to continue..."
+echo "Shutting down!"
+#Now there shall be the pre-clone script.
 echo
