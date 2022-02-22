@@ -9,7 +9,7 @@ echo
 echo "Please make a snapshot on the VM and name it Fresh Install"
 echo
 read -n 1 -r -s -p "Done? Press any key to continue..."
-echo "NOTE:"
+echo
 echo "---------------------------------------------------------------------------"
 echo " Here is your default IP configuration from the DHCP in VMware Networking  "
 echo "  By Default VMware Networking DHCP uses addresses x.x.x.128 - x.x.x.254"
