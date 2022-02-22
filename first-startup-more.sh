@@ -28,7 +28,7 @@ echo "Shutting down the firewall"
 systemctl disable firewalld
 systemctl stop firewalld
 
-clear
+echo
 
 #Show current hostname
 Current_Hostname=$(hostname)
@@ -63,7 +63,7 @@ else
 		echo $flex1ip_var' flex1' >> /etc/hosts
 		echo $flex2ip_var' flex2' >> /etc/hosts
 		echo $flex3ip_var' flex3' >> /etc/hosts
-		clear
+		echo
     else
         if [ $VMno_var = 2 ]; then
             hostnamectl set-hostname $vm2_hostname_var
@@ -88,7 +88,7 @@ else
 			echo $flex1ip_var' flex1' >> /etc/hosts
 			echo $flex2ip_var' flex2' >> /etc/hosts
 			echo $flex3ip_var' flex3' >> /etc/hosts
-			clear
+			echo
         else
 		    if [ $VMno_var = 3 ]; then
 			    hostnamectl set-hostname $vm3_hostname_var
@@ -113,7 +113,7 @@ else
 				echo $flex1ip_var' flex1' >> /etc/hosts
 				echo $flex2ip_var' flex2' >> /etc/hosts
 				echo $flex3ip_var' flex3' >> /etc/hosts
-				clear
+				echo
 			else
                 if [ $VMno_var = 4 ]; then
                     hostnamectl set-hostname $vm4_hostname_var
@@ -134,7 +134,7 @@ else
 					echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 					echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 					echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-					clear
+					echo
                 else
                     echo
 				    echo "Only numbers in between 1 and up to 4 are allowed, but you did use $VMno_var which is illegal! Run this script again, please."
@@ -149,12 +149,12 @@ fi
 sed -i '' -e '$ d' ~/.bash_profile
 echo '/home/ssh-finish.sh' >> ~/.bash_profile
 
-clear
+echo
 rm -rf /.ssh/
 ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
 sleep 5
 
-clear
+echo
 echo 
 echo "After your VM restart, please connect to its new IP address we just set."
 echo
