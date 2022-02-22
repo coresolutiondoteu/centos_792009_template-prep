@@ -47,40 +47,40 @@ echo "GATEWAY IP >> This maybe the same like it is now: "$Current_Gateway""
 echo "DNS IP >> This maybe the same like it is now: "$Current_DNS""
 
 #These are predefined variables for this installation
-echo 'vm1_hostname_var="flex-gw"' >> /home/flex-gw.vars
-echo 'vm2_hostname_var="flex1"' >> /home/flex1.vars
-echo 'vm3_hostname_var="flex2"' >> /home/flex2.vars
-echo 'vm4_hostname_var="flex3"' >> /home/flex3.vars
+echo 'flex-gw' >> /home/flex-gw.vars
+echo 'flex1' >> /home/flex1.vars
+echo 'flex2' >> /home/flex2.vars
+echo 'flex3' >> /home/flex3.vars
 echo
 echo "What is your future STATIC flex-gw IP address?"
 read flexgwip_var
-echo 'flexgwip_var="'$flexgwip_var'"' >> /home/flexgwip.vars
+echo $flexgwip_var >> /home/flexgwip.vars
 echo 
 echo "What is your future STATIC flex1 IP address?"
 read flex1ip_var
-echo 'flex1ip_var="'$flex1ip_var'"' >> /home/flex1ip.vars
+echo $flex1ip_var >> /home/flex1ip.vars
 echo
 echo "What is your future STATIC flex2 IP address?"
 read flex2ip_var
-echo 'flex2ip_var="'$flex2ip_var'"' >> /home/flex2ip.vars
+echo $flex2ip_var >> /home/flex2ip.vars
 echo
 echo "What is your future STATIC flex3 IP address?"
 read flex3ip_var
-echo 'flex3ip_var="'$flex3ip_var'"' >> /home/flex3ip.vars
+echo $flex3ip_var >> /home/flex3ip.vars
 echo
 echo "What is your future Network PREFIX? (e.g. for /16 write 16 and for /24 write 24)"
 read prefix_var
-echo 'prefix_var="'$prefix_var'"' >> /home/prefix.vars
+echo $prefix_var >> /home/prefix.vars
 echo
 echo "What is your future Network GATEWAY IP address?"
 # We could ask if it is the same like now and if yes, then use it?
 read netgwip_var
-echo 'netgwip_var="'$netgwip_var'"' >> /home/netgwip.vars
+echo $netgwip_var >> /home/netgwip.vars
 echo
 echo "What is your future Network DNS IP address?"
 # We could ask if it is the same like now and if yes, then use it?
 read dnsip_var
-echo 'dnsip_var="'$dnsip_var'"' >> /home/dnsip.vars
+echo $dnsip_var >> /home/dnsip.vars
 echo
 echo "Thank you, we have set variables for flex nodes preparation."
 echo
@@ -161,11 +161,11 @@ rm -f ~root/anaconda-ks.cfg
 ###Final Step (this will shutdown VM)
 clear
 echo
-echo "Now I will Turn Off the Template VM, and you can make 4 clones of this Template to continue with your PowerFlex installation."
+#echo "Now I will Turn Off the Template VM, and you can make 4 clones of this Template to continue with your PowerFlex installation."
 echo
-echo "Turn them one by one, not at the same time, to overcome any IP issues or so."
-echo
-echo "First login inside the VM and then Turn ON another one. Wait for the 'first-startup.sh' to finish before moving to other steps."
+#echo "Turn them one by one, not at the same time, to overcome any IP issues or so."
+echo "New text here is needed..."
+#echo "First login inside the VM and then Turn ON another one. Wait for the 'first-startup.sh' to finish before moving to other steps."
 echo
 read -n 1 -r -s -p "Press any key to continue..."
 echo "Shutting down!"
