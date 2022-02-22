@@ -13,11 +13,11 @@
 
 ##Setting up variables for later use
 #Showing current IP configuration
-clear
+echo
 echo "Please make a snapshot on the VM and name it Fresh Install"
 echo
 read -n 1 -r -s -p "Done? Press any key to continue..."
-clear
+echo
 echo "---------------------------------------------------------------------------"
 echo "Here is your default IP configuration from the DHCP in VMware Networking"
 echo "By Default VMware Networking DHCP uses addresses x.x.x.128 - x.x.x.254"
@@ -95,14 +95,14 @@ read -n 1 -r -s -p "I am ready to generalize your template, press any key to con
 
 
 ##Pre-Clone script defionition
-clear
+echo
 #Stop logging services
 service rsyslog stop 
 service auditd stop
 
 #Install required software
 yum update --skip-broken -y
-yum install -y nano wget ntpd
+yum install -y nano wget ntp
 
 ##Get (latest) Scripts 
 wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/more/first-startup-more.sh
@@ -115,7 +115,7 @@ echo '/home/first-startup-more.sh' >> ~/.bash_profile
 #Yum CleanUp
 yum clean all
 
-#Clear the logs
+#echo the logs
 /usr/sbin/logrotate -f /etc/logrotate.conf
 rm -f /var/log/*-???????? /var/log/*.gz
 rm -f /var/log/dmesg.old
@@ -150,7 +150,7 @@ rm -rf ~root/.ssh/
 rm -f ~root/anaconda-ks.cfg
 
 ###Final Step (this will shutdown VM)
-clear
+echo
 echo
 echo "Now I will Turn Off the Template VM, and you can make 4 clones of this Template to continue with your PowerFlex installation."
 echo
@@ -164,6 +164,6 @@ read -n 1 -r -s -p "Press any key to shutdown..."
 echo "Shutting down!"
 sleep 20
 
-clear
+echo
 history -c 
 sys-unconfig
