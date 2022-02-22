@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #Reading all variables from /home/*.vars
+
 read vm1_hostname_var < /home/flex-gw.vars
 read vm2_hostname_var < /home/flex1.vars
 read vm3_hostname_var < /home/flex2.vars
@@ -11,7 +12,7 @@ read flex2ip_var < /home/flex2ip.vars
 read flex3ip_var < /home/flex3ip.vars
 read prefix_var < /home/prefix.vars
 read netgwip_var < /home/netgwip.vars
-read dnsip_var < /home/dnsip.vars
+read dnsip_var < /home/dnsip.vars 
 
 #NTPd
 systemctl start ntpd
@@ -46,6 +47,7 @@ else
         echo
         echo "Your new hostname is $NewHostName1"
         echo
+	read flexgwip_var < /home/flexgwip.vars
 		sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
 		echo
 		echo "DHCP records from the VM were deleted, now we will set static definition."
@@ -121,6 +123,10 @@ else
                     echo
                     echo "Your new hostname is $NewHostName4"
 			        echo
+				read flexgwip_var < /home/flexgwip.vars
+read flex1ip_var < /home/flex1ip.vars
+read flex2ip_var < /home/flex2ip.vars
+read flex3ip_var < /home/flex3ip.vars
 					sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
 					echo
 					echo "DHCP records from the VM were deleted, now we will set static definition."
@@ -134,6 +140,10 @@ else
 					echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 					echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
 					echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
+					echo $flexgwip_var' flex-gw' >> /etc/hosts
+					echo $flex1ip_var' flex1' >> /etc/hosts
+					echo $flex2ip_var' flex2' >> /etc/hosts
+					echo $flex3ip_var' flex3' >> /etc/hosts
 					echo
                 else
                     echo
@@ -155,10 +165,12 @@ ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
 sleep 5
 
 echo
-echo 
-echo "After your VM restart, please connect to its new IP address we just set."
+echo "----------------------------------------------"
+echo "After your VM restart, please connect to it's"
+echo "   new "STATIC" IP address we just set."
 echo
-echo "We will finish the SSH keys generation and exchange once you log in."
-echo
+echo " We will finish the SSH keys generation, and"
+echo "       do exchange once you log in."
+echo "----------------------------------------------"
 read -n 1 -r -s -p "Press any key to restart..."
 reboot
