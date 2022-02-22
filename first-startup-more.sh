@@ -155,7 +155,8 @@ fi
 
 echo "After your VM restart, please connect to its new IP address we just set."
 echo
-echo read -n 1 -r -s -p "Press any key to restart..."
+read -n 1 -r -s -p "Press any key to restart..."
+reboot
 
 echo
 #echo "Your environment preparation is finished, once your last VM get to this point."
