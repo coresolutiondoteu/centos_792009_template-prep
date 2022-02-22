@@ -1,6 +1,6 @@
 #!/bin/bash
 
-clear
+echo
 echo "Please wait for each VM to finish boot and then continue."
 echo
 sleep 15
