@@ -145,30 +145,20 @@ else
     fi
 fi
 
-#clear
-#rm -rf /.ssh/
-#ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
-#Nodes SSH registration / This will have to be in separate script after restart... logion with new static IP
-#ssh-copy-id -i ~/.ssh/id_rsa.pub "$flexgwip_var"
-#ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex1ip_var"
-#ssh-copy-id -i ~/.ssh/id_rsa.pub "$flex2ip_var"
 
+sed -i '' -e '$ d' ~/.bash_profile
+echo '/home/ssh-finish.sh' >> ~/.bash_profile
+
+clear
+rm -rf /.ssh/
+ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
+sleep 5
+
+clear
+echo 
 echo "After your VM restart, please connect to its new IP address we just set."
+echo
+echo "We will finish the SSH keys generation and exchange once you log in.
 echo
 read -n 1 -r -s -p "Press any key to restart..."
 reboot
-
-echo
-#echo "Your environment preparation is finished, once your last VM get to this point."
-#echo
-#echo "After all VMs do finish with this script, it is advised to reboot them."
-#echo
-#echo "Then you can proceed with the K8s choosen flavour installation."
-#echo
-#echo "Thank you!"
-echo
-#Last line of .bash_profile deleted
-#sed -i '' -e '$ d' ~/.bash_profile
-#Last line of .bash_profile deleted
-#sed -i '' -e '$ d' ~/.bash_profile
-#sleep 5 ; reboot
