@@ -18,12 +18,13 @@ wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009
 wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/more/ssh-finish.sh
 chmod +x /home/*.sh
 
-echo
-echo "System was updated and did install wget, nano and ntp."
-echo
-echo "Scripts were downloaded, please run '/home/flex-pre-clone.sh'."
-echo
-echo "Praparation of your first template will begin with this script."
-echo
-echo "I will guide you through the preparation."
-echo
+echo "///////////////////////////////////////////////////////////////////"
+echo "/ System was updated and did install wget, nano and ntp.          /"
+echo "/                                                                 /"
+echo "/ Scripts were downloaded, please run '/home/flex-pre-clone.sh'.  /"
+echo "/                                      -----------------------    /"
+echo "/ Praparation of your first template will begin with this script. /"
+echo "/                                                                 /"
+echo "/ I will guide you through the preparation. Press enter.          /"              
+echo "///////////////////////////////////////////////////////////////////"
+echo "/home/flex-pre-clone.sh"
