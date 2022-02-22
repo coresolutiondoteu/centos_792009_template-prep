@@ -1,5 +1,11 @@
 #!/bin/bash
 
+clear
+echo "Please wait for each VM to finish boot and then continue."
+echo
+sleep 15
+read -n 1 -r -s -p "All VMs booted? Press any key to continue..."
+
 #Show current hostname
 Current_Hostname=$(hostname)
 
@@ -56,5 +62,5 @@ echo "Environmental preparation is finished. You can proceed with additional ste
 echo
 echo "Thank you!"
 echo
-read -n 1 -r -s -p "Press any key to finish."
+read -n 1 -r -s -p "Press any key to finish environment preparation."
 echo
