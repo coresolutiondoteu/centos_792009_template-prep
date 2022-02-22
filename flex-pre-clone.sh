@@ -95,19 +95,19 @@ read -n 1 -r -s -p "I am ready to generalize your template, press any key to con
 
 
 ##Pre-Clone script defionition
-echo
+#echo
 #Stop logging services
-service rsyslog stop 
-service auditd stop
+#service rsyslog stop 
+#service auditd stop
 
 #Install required software
-yum update --skip-broken -y
-yum install -y nano wget ntp
+#yum update --skip-broken -y
+#yum install -y nano wget ntp
 
 ##Get (latest) Scripts 
-wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/more/first-startup-more.sh
-wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/more/ssh-finish.sh
-chmod +x /home/*.sh
+#wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/more/first-startup-more.sh
+#wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/more/ssh-finish.sh
+#chmod +x /home/*.sh
 echo ' ' >> ~/.bash_profile
 echo '#InstallationPowerFlex' >> ~/.bash_profile
 echo '/home/first-startup-more.sh' >> ~/.bash_profile
@@ -151,18 +151,21 @@ rm -f ~root/anaconda-ks.cfg
 
 ###Final Step (this will shutdown VM)
 echo
+echo "/////////////////////////////////////////////////////////////////////"
+echo "Now I will Turn Off the Template VM, and you can make 4 clones"
+echo "from this Template to continue with your PowerFlex installation."
 echo
-echo "Now I will Turn Off the Template VM, and you can make 4 clones of this Template to continue with your PowerFlex installation."
+echo "Start them one by one, not at the same time."
 echo
-echo "Start them one by one, not at the same time, to overcome any IP issues or so."
-echo
-echo "First login inside the VM and then Turn ON another one. Wait for the startup script finish before moving to other steps."
+echo "First login inside the turned on VM and only after start another one."
+echo "Wait for the startup script finish before moving to other steps."
+echo "/////////////////////////////////////////////////////////////////////"
 echo
 
 read -n 1 -r -s -p "Press any key to shutdown..."
-
-echo "Shutting down!"
-sleep 20
+echo
+echo "Shutting down in 3 seconds!"
+sleep 3
 
 echo
 history -c 
