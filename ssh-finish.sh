@@ -63,4 +63,4 @@ echo
 echo "Thank you!"
 echo
 read -n 1 -r -s -p "Press any key to finish environment preparation."
-echo
+echo "End of the script."
