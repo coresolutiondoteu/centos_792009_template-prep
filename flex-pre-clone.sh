@@ -10,6 +10,7 @@
 #
 
 
+
 ##Setting up variables for later use
 #Showing current IP configuration
 clear
@@ -109,12 +110,12 @@ yum update --skip-broken -y
 yum install -y nano wget ntpd
 
 ##Get (latest) Scripts 
-#wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/first-startup.sh
-#wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/main/ssh-finish.sh
-#chmod +x /home/*.sh
-#echo ' ' >> ~/.bash_profile
-#echo '#InstallationPowerFlex' >> ~/.bash_profile
-#echo '/home/first-startup.sh' >> ~/.bash_profile
+wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/more/first-startup-more.sh
+wget -P /home/ https://raw.githubusercontent.com/coresolutiondoteu/centos_792009_template-prep/more/ssh-finish.sh
+chmod +x /home/*.sh
+echo ' ' >> ~/.bash_profile
+echo '#InstallationPowerFlex' >> ~/.bash_profile
+echo '/home/first-startup-more.sh' >> ~/.bash_profile
 
 #clear
 #echo
@@ -161,11 +162,11 @@ rm -f ~root/anaconda-ks.cfg
 ###Final Step (this will shutdown VM)
 clear
 echo
-#echo "Now I will Turn Off the Template VM, and you can make 4 clones of this Template to continue with your PowerFlex installation."
+echo "Now I will Turn Off the Template VM, and you can make 4 clones of this Template to continue with your PowerFlex installation."
 echo
-#echo "Turn them one by one, not at the same time, to overcome any IP issues or so."
-echo "New text here is needed..."
-#echo "First login inside the VM and then Turn ON another one. Wait for the 'first-startup.sh' to finish before moving to other steps."
+echo "Start them one by one, not at the same time, to overcome any IP issues or so."
+echo
+echo "First login inside the VM and then Turn ON another one. Wait for the startup script finish before moving to other steps."
 echo
 read -n 1 -r -s -p "Press any key to continue..."
 echo "Shutting down!"
