@@ -154,9 +154,14 @@ else
         fi
     fi
 fi
-echo "Was hosts file updated?"
+echo
+echo "Was hosts file updated? Can you see your IPs and hostnames?"
+echo
+echo
 cat /etc/hosts
-
+echo
+echo
+read -n 1 -r -s -p "Press any key to continue..."
 
 sed -i '' -e '$ d' ~/.bash_profile
 echo '/home/ssh-finish.sh' >> ~/.bash_profile
@@ -164,15 +169,23 @@ echo '/home/ssh-finish.sh' >> ~/.bash_profile
 echo
 rm -rf /.ssh/
 ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
-sleep 5
 
+clear
 echo
-echo "----------------------------------------------"
-echo "After your VM restart, please connect to it's"
-echo "   new "STATIC" IP address we just set."
+echo "/////////////////////////////////////////////////////////////////////"
+echo "/                                                                   /" 
+echo" / Now I will reboot all your VMs and then finish the preparation.   /"
+echo "/                                                                   /" 
+echo "/ Please wait till the last cloned VM reboots, so you could login   /"
+echo "/             with your newly set "STATIC" IP address.              /"
+echo "/                                                                   /"
+echo "/   If all cloned VMs booted up, login inside each VM with your     /"
+echo "/                      favorite SSH client.                         /"
+echo "/                                                                   /"
+echo "/                Then press any key to continue.                    /"
+echo "/                                                                   /"
+echo "/////////////////////////////////////////////////////////////////////"
 echo
-echo " We will finish the SSH keys generation, and"
-echo "       do exchange once you log in."
-echo "----------------------------------------------"
+echo
 read -n 1 -r -s -p "Press any key to restart..."
 reboot
