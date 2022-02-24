@@ -174,7 +174,7 @@ clear
 echo
 echo "/////////////////////////////////////////////////////////////////////"
 echo "/                                                                   /" 
-echo" / Now I will reboot all your VMs and then finish the preparation.   /"
+echo "/ Now I will reboot all your VMs and then finish the preparation.   /"
 echo "/                                                                   /" 
 echo "/ Please wait till the last cloned VM reboots, so you could login   /"
 echo "/             with your newly set "STATIC" IP address.              /"
