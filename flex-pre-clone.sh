@@ -19,11 +19,11 @@ echo "--------------------------------------------------------------------------
 echo
 #Add static IP information, based on your IP requirments
 Current_IP=$(ip add | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/24')
-echo "Your current IP address is: $Current_IP"
+echo "Your current IP address is:        $Current_IP"
 Current_Gateway=$(ip route show default | awk '/default/ {print $3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
-echo "Your current default Gateway is: $Current_Gateway"
+echo "Your current default Gateway is:   $Current_Gateway"
 Current_DNS=$(cat /etc/resolv.conf | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
-echo "Your current DNS server is: $Current_DNS"
+echo "Your current DNS server is:        $Current_DNS"
 echo 
 echo "Please prepare your definied IP networking information:"
 echo "---------------------------------------------------------------------------"
