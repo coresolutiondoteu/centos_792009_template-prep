@@ -69,6 +69,8 @@ echo "/                                        /"
 echo "//////////////////////////////////////////"
 sleep 5
 clear
+echo 
+echo "                                              Welcome into the environemnt prepared for"
 echo
 echo                                ".."
 echo     "############/           ,#####(        ####,         ####            .(/**********   .((*             /((       *(/,///*((*"
@@ -117,5 +119,5 @@ echo                                            ".;l:'..........................
 echo                                              ",lc,'',,,,,,,'''''''''''''''''''''''''''',:ll;."                                               
 echo                                               ",clcccccccccccccccccccccccccccccccccccccllc,"                                                 
 echo                                                ".''''''''''''''''''''''''''''''''''''''''."                                                  
-echo 
+echo
 echo "End of the script."
