@@ -2,7 +2,7 @@
 
 echo
 echo "/////////////////////////////////////////////////////////////////////"
-edho "/                                                                   /" 
+echo "/                                                                   /" 
 echo "/ Please wait till the last cloned VM reboots, so you could login.  /"
 echo "/                                                                   /"
 echo "/   If all cloned VMs booted up, login inside each VM with your     /"
