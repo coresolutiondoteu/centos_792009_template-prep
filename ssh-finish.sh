@@ -1,15 +1,16 @@
 #!/bin/bash
 
 echo
-echo "////////////////////////////////////////////////////////////////////"
-edho "/                                                                  /" 
-echo "/ Please wait till the last cloned VM reboots, so you could login. /"
-echo "/                                                                  /"
-echo "/          If all cloned VMs booted up, login please.              /"
-echo "/                                                                  /"
-echo "/               Then press any key to continue.                    /"
-echo "/                                                                  /"
-echo "////////////////////////////////////////////////////////////////////"
+echo "/////////////////////////////////////////////////////////////////////"
+edho "/                                                                   /" 
+echo "/ Please wait till the last cloned VM reboots, so you could login.  /"
+echo "/                                                                   /"
+echo "/   If all cloned VMs booted up, login inside each VM with your     /"
+echo "/                      favorite SSH client.                         /"
+echo "/                                                                   /"
+echo "/               Then press any key to continue.                     /"
+echo "/                                                                   /"
+echo "/////////////////////////////////////////////////////////////////////"
 
 sleep 15
 read -n 1 -r -s -p "All VMs booted? Press any key to continue..."
