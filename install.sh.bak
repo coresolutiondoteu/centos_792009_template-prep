@@ -9,7 +9,7 @@ echo
 echo "Updating system may take some time, please wait..."
 echo
 #Install required software
-yum upgrade --skip-broken -y -q
+yum update --skip-broken -y -q
 yum install -y nano wget ntp -q
 
 ##Get (latest) Scripts
