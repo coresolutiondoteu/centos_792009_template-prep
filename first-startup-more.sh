@@ -52,19 +52,19 @@ else
         echo
         echo "Your new hostname is $NewHostName1"
         echo
-	sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
+	sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-eth0
 	echo
 	echo "DHCP records from the VM were deleted, now we will set static definition."
 	echo
-	echo 'IPADDR='$flexgwip_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
-	echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
-	echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-	echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-	#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-	#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-	echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-	echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-	echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
+	echo 'IPADDR='$flexgwip_var >>/etc/sysconfig/network-scripts/ifcfg-eth0
+	echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-eth0
+	echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-eth0
+	echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-eth0
+	#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+	#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+	echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+	echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+	echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
 	echo $flexgwip_var' flex-gw' >> /etc/hosts
 	echo $flex1ip_var' flex1' >> /etc/hosts
 	echo $flex2ip_var' flex2' >> /etc/hosts
@@ -77,19 +77,19 @@ else
 		echo
             	echo "Your new hostname is $NewHostName2"
             	echo
-	    	sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
+	    	sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-eth0
 		echo
 		echo "DHCP records from the VM were deleted, now we will set static definition."
 		echo
-		echo 'IPADDR='$flex1ip_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
-		echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
-		echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-		echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-		#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-		#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-		echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-		echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-		echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
+		echo 'IPADDR='$flex1ip_var >>/etc/sysconfig/network-scripts/ifcfg-eth0
+		echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-eth0
+		echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-eth0
+		echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-eth0
+		#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+		#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+		echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+		echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+		echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
 		echo $flexgwip_var' flex-gw' >> /etc/hosts
 		echo $flex1ip_var' flex1' >> /etc/hosts
 		echo $flex2ip_var' flex2' >> /etc/hosts
@@ -102,19 +102,19 @@ else
                 	echo
 			echo "Your new hostname is $NewHostName3"
                 	echo
-			sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
+			sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-eth0
 			echo
 			echo "DHCP records from the VM were deleted, now we will set static definition."
 			echo
-			echo 'IPADDR='$flex2ip_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
-			echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
-			echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-			echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-			#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-			#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-			echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-			echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-			echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
+			echo 'IPADDR='$flex2ip_var >>/etc/sysconfig/network-scripts/ifcfg-eth0
+			echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-eth0
+			echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-eth0
+			echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-eth0
+			#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+			#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+			echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+			echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+			echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
 			echo $flexgwip_var' flex-gw' >> /etc/hosts
 			echo $flex1ip_var' flex1' >> /etc/hosts
 			echo $flex2ip_var' flex2' >> /etc/hosts
@@ -127,19 +127,19 @@ else
                     		echo
                     		echo "Your new hostname is $NewHostName4"
 				echo
-				sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-ens33
+				sed -i "s/BOOTPROTO=.*/BOOTPROTO="none"/" /etc/sysconfig/network-scripts/ifcfg-eth0
 				echo
 				echo "DHCP records from the VM were deleted, now we will set static definition."
 				echo
-				echo 'IPADDR='$flex3ip_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
-				echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-ens33
-				echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-				echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-ens33
-				#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-				#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-				echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-				echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
-				echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-ens33
+				echo 'IPADDR='$flex3ip_var >>/etc/sysconfig/network-scripts/ifcfg-eth0
+				echo 'PREFIX='$prefix_var >>/etc/sysconfig/network-scripts/ifcfg-eth0
+				echo 'GATEWAY='$netgwip_var >> /etc/sysconfig/network-scripts/ifcfg-eth0
+				echo 'DNS1='$dnsip_var >> /etc/sysconfig/network-scripts/ifcfg-eth0
+				#echo 'DNS2=8.8.8.8' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+				#echo 'DNS3=8.8.4.4' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+				echo 'DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+				echo 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+				echo 'IPV6INIT=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
 				echo $flexgwip_var' flex-gw' >> /etc/hosts
 				echo $flex1ip_var' flex1' >> /etc/hosts
 				echo $flex2ip_var' flex2' >> /etc/hosts
